@@ -1,10 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './index.css';
+import { store } from './store';
+
+// import { ApiProvider } from "@reduxjs/toolkit/dist/query/react"; // It is from rtk query, If we use ApiProvider no need use store 
+
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
