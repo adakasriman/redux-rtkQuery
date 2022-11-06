@@ -10,3 +10,5 @@ export const store = configureStore({
 
 
 // middleware for caching data and pulling data into server
+
+//binds the create api with the store
