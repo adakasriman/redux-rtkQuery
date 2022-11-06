@@ -22,7 +22,10 @@ export const AddNewContact = () => {
         }
 
         await addContact(newContact);
-        refetch();
+        // refetch();
+        setUsername("");
+        setEmail("");
+
 
     }
     return (

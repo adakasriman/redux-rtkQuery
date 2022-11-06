@@ -4,33 +4,39 @@ import { Contact } from "../models/contacts.model";
 export const contactsApi = createApi({
     reducerPath: "contactsApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3006/" }), // here we were creating baseurl
+    tagTypes: ['Contact'],
     endpoints: (builder) => ({                                          // bulider can build end points
         contacts: builder.query<Contact[], void>({
-            query: () => '/contacts'
+            query: () => '/contacts',
+            providesTags: ['Contact']
         }),
         contact: builder.query<Contact, string>({
-            query: (id) => `/contacts/${id}`
+            query: (id) => `/contacts/${id}`,
+            providesTags: ['Contact']
         }),
         addConact: builder.mutation<void /*addContact is used send new record to the server*/, Contact /* Contact is interface of the new record */>({
             query: contact/*new record*/ => ({
                 url: '/contacts',
                 method: "POST",
                 body: contact
-            })
+            }),
+            invalidatesTags: ['Contact']
         }),
-        updateConact: builder.mutation<void /*addContact is used send new record to the server*/, Contact /* Contact is interface of the new record */>({
-            query: (id, ...rest)/*new record*/ => ({
-                url: `/contacts/${id}`,
+        updateConact: builder.mutation<void, Contact /* Contact is interface of the new record */>({
+            query: (contact)/*new record*/ => ({
+                url: `/contacts/${contact.id}`,
                 method: "PUT",
-                body: rest
-            })
+                body: contact
+            }),
+            invalidatesTags: ['Contact']
         }),
-        deleteConact: builder.mutation<void /*addContact is used send new record to the server*/, string /* Contact is interface of the new record */>({
+        deleteConact: builder.mutation<void ,string>({
             query: (id)/*new record*/ => ({
                 url: `/contacts/${id}`,
                 method: "DELETE",
                 // body: 
-            })
+            }),
+            invalidatesTags: ['Contact']
         })
     })
 })

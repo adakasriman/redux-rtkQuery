@@ -20,11 +20,11 @@ function App() {
           {isFetching && <h2>....Fetching</h2>}
           {
             isSuccess && (
-              <div>
+              <div className='contactDetails'>
                 {
                   data.map(item => {
-                    return <div key={item.id}>
-                      <span>{item.name}</span>
+                    return <div className='contact' key={item.id}>
+                      {/* <span>{item.name}</span> */}
                       <ContactDetails id={item.id} />
                     </div>
                   })
