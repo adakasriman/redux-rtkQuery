@@ -13,13 +13,16 @@ export const AddNewContact = () => {
     const addNewContact = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log(data?.length);
-        let length: any = data?.length;
+        let lastObject = data?.at(-1)
+        let newId: any = lastObject?.id;
 
         let newContact = {
-            id: length + 1,
-            name: usename,
-            email: email
+            'id': newId + 1,
+            'name': usename,
+            'email': email
         }
+
+        console.log(newContact);
 
         await addContact(newContact);
         // refetch();
