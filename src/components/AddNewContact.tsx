@@ -3,7 +3,7 @@ import { useAddConactMutation, useContactsQuery } from '../services/contactsApi'
 import { Contact } from "../models/contacts.model";
 
 
-export const AddNewContact = () => {
+export const AddNewContact:React.FC = () => {
     const [usename, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
 

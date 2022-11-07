@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Contact } from "../models/contacts.model";
 
-export const contactsApi = createApi({
+export const contactsApi = createApi({ //contactApi reducer
     reducerPath: "contactsApi",
     baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3006/" }), // here we were creating baseurl
     tagTypes: ['Contact'], // When ever the data is updated, inserted or deleted from the server, it updates the data.

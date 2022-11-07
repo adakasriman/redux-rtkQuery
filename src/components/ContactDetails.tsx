@@ -3,7 +3,12 @@ import { Contact } from '../models/contacts.model';
 import { useContactQuery, useUpdateConactMutation, useDeleteConactMutation } from '../services/contactsApi';
 import { Popup } from './Popup';
 
-export const ContactDetails = ({ id }: { id: string }) => {
+
+interface Props {
+   id:string
+}
+
+export const ContactDetails: React.FC<Props> = ({ id }) => {
     const [usename, setUsername] = useState<string>("");
     const [updatedId, setUpdatedId] = useState<string>('');
     const [email, setEmail] = useState<string>("");
